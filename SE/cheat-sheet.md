@@ -8,17 +8,17 @@
 	- Formal
 
 ## Software Process
-- Waterfall
-- Evolutionary prototype
-- RUP
-- Agile
+- [Waterfall](#Waterfall)
+- [Evolutionary prototype](#Evolutionary\ prototype)
+- [RUP](#RUP)
+- [Agile](#Agile)
 
 ## Software Phases
-- Requirement engineering
-- Design
+- [Requirement engineering](#RE)
+- [Design](#Design)
 - Implementation
-- Verification & Validation
-- Maintanance
+- [Verification & Validation](#Verification\ and\ Validation)
+- [Maintenance](#Maintenance)
 
 
 # Software phases
@@ -72,14 +72,55 @@
 
 ### Product: SRS
 
-## Design: TODO afternoon
+## Design
 
-## Implementation: TODO afternoon
+### Def'n
+- Software Architecture (SWA): blueprint of software system (involve: structure, behavior, internal interaction, non-func props)
+- Temporal aspect: design changes over time
+
+| Prescriptive (as-conceived)    | Descriptive (as-implemented) |
+|--------------------------------|------------------------------|
+| dictates how sys will be build | how sys actually built       |
+
+| Drift                                 | Erosion                           |
+|---------------------------------------|-----------------------------------|
+| changes that not violate architecture | changes that violate architecture |
+| lead to unecessary complex            | lead to poor architecture design  |
+
+### Elements
+```
+	+---------------------+			 +--------------+					+------------+
+	| processing elements |		+	 | data element |    ---------->    | components |
+	+---------------------+			 +--------------+					+------------+
+
+	+------------+			 +----------------------+					+-------------------+
+	| components |     +     | interaction elements |	 ---------->	| sys configuration |
+	+------------+			 +----------------------+					+-------------------+
+```
+
+### Types of architecture
+- Pipe and filters: output of A -> input of B
+- Event driven: event + event consumer
+- Publish and subscribe: twitter
+- Client-server: email
+- P2P: ea peer acts as supplier and consumer of resources
+- REST(representational state transfer)
+
+### Design pattern
+
+#### Factory method pattern
+make a factory method (abstract method for creating instances)
+
+#### Strategy pattern: TODO
+
+## Implementation
 
 ## Verification and Validation
 
 ### Def'n
-*Does we build the system rite?*
+*Verify: Does we build the system rite?*
+
+*Validate: Does we build the rite system?*
 
 | Failure            | Fault          | Error          |
 |--------------------|----------------|----------------|
@@ -178,10 +219,10 @@ e.g:
 if date.before(SUMMER_START) or date.after(SUMMER_END):
 	...
 
-					|
-					|
-					|
-					v
+				|
+				|
+				|
+				v
 
 if not_summer(date)
 	...
@@ -206,3 +247,68 @@ method is too long & have cohensive segment -> create new method of that segment
 ### When not?
 - code is broken
 - no reason to refac
+
+# Software Process
+
+## Waterfall
+```
++----------+
+| Software |_____
+| concept  |	|
++----------+	|
+				|
+			+-------------+
+			| Requirement |______
+			| analysis	  |		|
+			+-------------+		|
+								|
+							+---------------+
+							| Architectural |________
+							| design		|		|
+							+---------------+		|
+													|
+												+----------+
+												| Detailed |_________ 
+												| design   |		|
+												+----------+		|
+																	|
+																+------------+
+																| Coding and |_______
+																| debugging  |		|
+																+------------+		|
+																					|
+																				+---------+
+																				| System  |
+																				| testing |
+																				+---------+
+```
+- Pro: find errors early
+- Con: diff to change
+
+## Evolutionary prototyping
+design intial prototype -> refine -> complete release prototype
+
+- Pro: immediate feedback
+- Con: diff to plan
+
+## RUP
+- RUP defines:
+  - order of phases
+  - transition criteria
+- Base of components:
+
+### Distinguishing aspect
+- Use-case driven: what sys do for ea user?
+- Architecture-centric
+- Interative & incremental: life time consist of cycles (1 cycles have all phases)
+
+### Phases
+
+| Phases       | Goals                                                          | Outcome                                                  |
+|--------------|----------------------------------------------------------------|----------------------------------------------------------|
+| Inception    | idea -> vision of end product                                  | initial use-case model, project plan & risk assesment    |
+| Elaboration  | analyses problem, establish arch, eliminate risks, refine plan | use-case model, sup requirements, architecture           |
+| Construction | features developed & tested                                    | complet product, test results, user manual               |
+| Transition   | new release                                                    | completed project, usable product, plan for next release |
+
+## Agile: TODO
