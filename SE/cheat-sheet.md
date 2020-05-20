@@ -9,7 +9,7 @@
 
 ## Software Process
 - [Waterfall](#Waterfall)
-- [Evolutionary prototype](#Evolutionary\ prototype)
+- [Evolutionary prototype](#Evolutionary\ prototyping)
 - [RUP](#RUP)
 - [Agile](#Agile)
 
@@ -295,7 +295,7 @@ design intial prototype -> refine -> complete release prototype
 - RUP defines:
   - order of phases
   - transition criteria
-- Base of components:
+- Base of components
 
 ### Distinguishing aspect
 - Use-case driven: what sys do for ea user?
