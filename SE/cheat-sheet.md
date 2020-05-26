@@ -111,9 +111,14 @@
 #### Factory method pattern
 make a factory method (abstract method for creating instances)
 
-#### Strategy pattern: TODO
+#### Strategy pattern
+define a family of algorithms, encapsulate each one, and make them interchangeable.
 
 ## Implementation
+- reduction of complexity: build the software easy to use and understand
+- anticipation of diversity: anticipate some changes of the software
+- structutring for validation: build the software easy to test
+- use of standards
 
 ## Verification and Validation
 
@@ -311,4 +316,61 @@ design intial prototype -> refine -> complete release prototype
 | Construction | features developed & tested                                    | complet product, test results, user manual               |
 | Transition   | new release                                                    | completed project, usable product, plan for next release |
 
-## Agile: TODO
+## Agile
+
+### XP
+props:
+- lightweight
+- discipline
+- humanistic
+
+#### How to do?
+select requirements -> break into task -> implement -> release -> redo the proces
+
+Thus:
+- release is small -> adapt quick with changes
+- designs is simple (enought to meet requirements)
+
+#### How to refac?
+#### Pair programming
+2 ppl, 1 do code, 1 do strategy
+
+#### CI
+dev: programs until local test pass -> integrate -> if system test fails, dev fix
+
+#### RE
+customer -> cards -> selected cards -> task cards
+
+#### Testing
+- unit tests: created by devs, runned frequenly
+- system test: provided by customer, runed between cycles
+
+### Scum
+
+# UML Diagram
+
+## Structural
+
+### Class diagram
+
+```
+	+------------+
+	| Class name |						------->  dependencies: X uses Y
+	+------------+
+	| attr		 |						________  associations: X has Y
+	| ....		 |
+	+------------+						=======>  generalization: X is Y
+	| operations |
+	+------------+
+```
+
+### Component diagram
+node = component
+edge = relationships between components
+
+### Deployment diagram
+node = computational unit
+edge = communication
+
+## Behavioral diagram
+ 
