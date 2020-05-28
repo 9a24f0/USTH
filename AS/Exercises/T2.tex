@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \centering
+	\LARGE\textbf{Tutorial \#2: Mapping}
+	
+	\justifying
+	\Large
+    \section{Exercise 1:}
+        \begin{equation}
+            f(p/q) = \frac{p+1}{p-2}
+        \end{equation}
+        When $p = 2, \forall q \in \Q^*$, we have: $f(2/q) =  \frac{3}{0}$.\\
+        There exist $(p/q)$ in domain such that $f(p/q)$ in codomain doesn't exist. Thus, (1) is not mapping. 
+        \begin{equation}
+            f(p/q) = \frac{p}{p+q}
+        \end{equation}
+        When $p = -q$, we have: $f(-1) =  \frac{p}{0}$.\\
+        There exist $(p/q)$ in domain such that $f(p/q)$ in codomain doesn't exist. Thus, (2) is not mapping.
+	\section{Exercise 2:}
+		\begin{enumerate}
+			\item[a)]
+				\begin{equation*}
+					f: \R \rightarrow \R \mbox{ defined by } f(x) = e^x
+				\end{equation*}
+				As $f'(x) = e^x > 0 \; \forall x \in \R$, the function $f$ only increases in $\R$. Thus, the function is injective.
+				However, for negative elements in codomain $(f(x) < 0)$, there exists no $x \in \R$ maps to $f(x)$. Hence, the function injective but not subjective.
+			\item[b)]
+				\begin{equation*}
+					f: \Z \rightarrow \Z \mbox{ defined by } f(n) = n^2 + 5
+				\end{equation*}
+				As $f(-n) = f(n) \; \forall n \in \Z$, the function is not injective. In addition, when $f(n) = 3$, there no such $x \in \Z$ maps to $f(x)$. Thus, the function is neither subjective nor injective.
+			\item[c)]
+				\begin{equation*}
+					f: \R \rightarrow \R \mbox{ defined by } f(x) = sin(x)
+				\end{equation*}
+				As $f(2\pi) = f(0) = 1$, the function is not injective. In addition, when $f(n) = 2$, there no such $x \in \Z$ maps to $f(x)$. Thus, the function is neither subjective nor injective.
+		\end{enumerate}
+		
+	\section{Exercise 3:}
+		\begin{enumerate}
+			\item [a)]
+				\begin{equation*}
+					f(x) = \frac{1}{2}x + 7
+				\end{equation*}
+				Let $y = f(x)$, we re-write the equation as
+				\begin{equation*}
+					y = \frac{1}{2}x + 7 \iff x = 2y - 14
+				\end{equation*}
+				Thus, the inverse function is $f^{-1}(x) = 2x -14$
+			\item[b)]
+				\begin{equation*}
+					f(x) = (x-2)^3 + 1
+				\end{equation*}
+				let $y = f(x)-1$, we re-write the equation as
+				\begin{equation*}
+					y = (x-2)^3 \iff x = \sqrt[3]{y} +2
+				\end{equation*}
+				Thus, the inverse function is $f^{-1}(x) = \sqrt[3]{x-1} +2$
+			\item[c)]
+				\begin{equation*}
+					f(x) = \frac{1+2x}{7+x}
+				\end{equation*}
+				Let $y = f(x)$, we re-write the equation as
+				\begin{equation*}
+					y = \frac{1+2x}{7+x} \iff x = \frac{1-7y}{y-2}
+				\end{equation*}
+				Thus, the inverse function is $f^{-1}(x) = \frac{1-7x}{x-2}$
+		\end{enumerate}
+	
+	\section{Exercise 4:}
+		The plot leaves for reader ;)\\
+		The domain of $f$: $ x \in \R \setminus \{0\}.$ The range of $f$: $f \in \R \setminus \{0\}$\\
+		Let $y = f(x)$, we re-write the equation as
+		\begin{equation*}
+			y = \frac{x+1}{x-1} \iff x = \frac{y+1}{y-1}
+		\end{equation*}
+		Thus, the inverse function of $f$ is $f^{-1} = \frac{x+1}{x-1}$.\\
+		\textbf{Compare:}
+		\begin{equation*}
+			f \circ f^{-1} =f(f^{-1}(x)) = \frac{\frac{x+1}{x-1} + 1}{\frac{x+1}{x-1}-1} = x
+		\end{equation*}
+		\begin{equation*}
+			f^{-1} \circ f =f^{-1}(f(x)) = \frac{\frac{x+1}{x-1} + 1}{\frac{x+1}{x-1}-1} = x
+		\end{equation*}
+		\textbf{Conclusion:} $f \circ f^{-1} = f^{-1} \circ f$ 
+		
+\end{document}
