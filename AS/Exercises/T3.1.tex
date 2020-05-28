@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+	\centering
+	\LARGE\textbf{Tutorial \#3.1: Group}
+	
+	\justify\Large
+	
+	\section{Exercise 1:}
+		\textbf{Prove that: } $G = (\R^*, *)$ is a group.
+		\begin{enumerate}
+			\item[i)]
+				Let $a, b, c \in \R^*, (a*b)*c = abc = a*(b*c)$. Thus, $G$ is associative.
+			\item[ii)]
+				There exists $e=1$ such that $a*e = a = e*a$. Thus, $G$ has indentity element.
+			\item[iii)]
+				There exists $1/a \; \forall a \in \R^*$  such that $a*1/a = 1 = e$. Thus, $G$ has inverse element.
+			\item [iv)]
+				Since $a*b = ab = ba = b*a$, $G$ is commutative.
+		\end{enumerate}
+		\textbf{Conclusion:} G is not only a group, but also an abelian group.
+	
+	\section{Exercise 2:}
+		\textbf{Prove that:} $G = (\R^*\times\Z, \circ)$ is a group with $(a,m) \circ (b,n) = (ab, m+n)$.
+		\begin{enumerate}
+			\item [i)]
+				Let arbitrary $(a,m),(b,n),(c,q) \in \R^*\times\Z$
+				\begin{equation*}
+					((a,m) \circ (b,n))\circ(c,q) = (ab, m+n)\circ(c,q) = (abc, m+n+q)
+				\end{equation*}
+				\begin{equation*}
+					(a,m) \circ ((b,n)\circ(c,q)) = (a,m)\circ(bc, n+q) = (abc, m+n+q)
+				\end{equation*}
+				Thus, G is associative.
+			\item [ii)]
+				There exists $e = (1,0)$ such that $(a, m)*e = (a, m)$. Thus, $G$ has identity element.
+			\item[iii)]
+				There exists $(1/a,-m)$ such that $(1/a,-m) \circ (a,m) = (1,0) = e$. Thus, $G$ has inverse element for all element in $(\R^*\times\Z)$
+			\item[iv)]
+				Since $(a,m) \circ (b,n) = (ab, m+n) = (ba, n+m) = (b,n) \circ (a,m)$. G is also commutative.\\
+		\end{enumerate}
+		\textbf{Conclusion:} G is an abelian group.
+		
+	\section{Exercise 3:}
+		Let $a, b, c$ be arbitrary in $\Z$.
+		\begin{enumerate}
+			\item [a)] Since $(a+b)+c \equiv a+b+c \equiv a+(b+c) \mbox{ (mod n)}$, addition mod n is associative operation in $\Z$.
+			\item [b)] Since $(ab)c \equiv abc \equiv a(bc) \mbox{ (mod n)}$, multiplication mod n is associative operation in $\Z$.
+		\end{enumerate}
+		\textbf{Conclusion:} Addition and multiplication mod n are associative operations in $\Z$.
+		
+	\section{Exercise 4:}
+		\textbf{Prove that:} (G, *) such that $(ab)^2 =a^2b^2$ is an abelian group.\\
+		\textbf{Indeed:}
+		\begin{align*}
+			(ab)^2 &= a^2b^2\\
+			abab &= aabb\\
+			(a^{-1}*a)ba(b*b^{-1}) &= (a^{-1}*a)ab(b*b^{-1})\\
+			ba &= ab\tag{1}
+		\end{align*}
+		\textbf{Conclusion:} Since $(G, *)$ is group, with (1) satisfied, $(G, *)$ is also commutative. Hence, $(G, *)$ is an abelian group.
+	
+	\section{Exercise 5:}
+		\textbf{Prove that:} $G = (\R\setminus\{-1\}, *)$ is an abelian group with $a*b=a+b+ab$.
+		\begin{enumerate}
+			\item [i)]
+				Let $a, b, c$ be arbitrary in $\R\setminus\{-1\}$, we have:
+				\begin{align*}
+					(a*b)*c = (a+b+ab)*c &= (a+b+ab) + c + (a+b+ab)c \\
+										 &= a+b+c +ab+bc+ac+abc\tag{1}
+				\end{align*}
+				\begin{align*}
+					a*(b*c) = a*(b+c+bc) &= a + (b+c+bc) + a(b+c+bc) \\
+										 &= a+b+c +ab+bc+ac+abc\tag{2}
+				\end{align*}
+				With (1) = (2), we conclude that $G$ is associative.
+			\item[ii)]
+				There exists $e=0$ such that $a*e = (a+0+a*0) = a$. Thus, G has identity element.
+			\item[iii)]
+				With arbitrary element $a \in \R\setminus\{-1\}$, there exists $a^{-1}$ is an inverse element of $a$. Indeed:
+				\begin{align*}
+					a*a^{-1} = e &\iff a+a^{-1}+aa^{-1} = 0\\
+								 &\iff a^{-1} = \frac{-a}{a+1}
+				\end{align*}
+			\item[iv)]
+				Since $a*b = a+b+ab = b+a+ba = b*a$, G is commutative.
+		\end{enumerate}
+		\textbf{Conclusion:} Hence, G is an abelian group.
+	
+	\section{Exercise 6:}
+		\textbf{Prove that:} $ab=ba$ with $a^4b = ba$ and $a^3 = e \;\forall a,b \in G$.\\
+		\textbf{Proof:} It's trivial (write EASY! in exam will get you score ;) ).
+		\begin{align*}
+			a^4b &= ba\\
+			a^3*ab &= ba\\
+			e*ab &= ba\\
+			(e*a)b &= ba\\
+			ab &= ba\tag{Q.E.D}
+		\end{align*}
+		
+	\section{Exercise 7:} Skip
+	
+	\section{Exercise 8:}
+		\textbf{Prove that:} $(a^n)^{-1} = (a^{-1})^n$ with a is an element in group G.\\
+		\textbf{Proof:}
+		We can easily deduce that
+		\begin{equation*}
+			(a^n)^{-1} * (a^n) = e\tag{1}
+		\end{equation*}
+		\begin{equation*}
+			(a^{-1})^n * (a^n) = a^{-1}...a^{-1}(a^{-1}a)a...a = a^{-1}...(a^{-1}a)...a = ... = e\tag{2}
+		\end{equation*}
+		Proposition \#2 saying that the inverse element of an element in group G is unique, while both $(a^n)^{-1}$ and $(a^{-1})^n$ is inverse element of $a^n$. Thus, $(a^n)^{-1}$ and $(a^{-1})^n$ must be equal.
+	
+	\section{Exercise 9:}
+		\textbf{Prove that:} $ax=xa \iff a^{-1}x=xa^{-1}$\\
+		\textbf{Proof:}
+			\begin{align*}
+				ax &= xa\\
+				a^{-1}ax &= a^{-1}xa\\
+				x &= a^{-1}xa\\
+				xa^{-1} &= a^{-1}xaa^{-1}\\
+				xa^{-1} &= a^{-1}x\tag{Q.E.D}
+			\end{align*}
+	
+	\section{Exercise 10:}
+		\textbf{Prove that:} $ab=ba$. Given $a^3b=ba^3$, $a,b \in G$ order 5.\\
+		\textbf{Proof:}
+		\begin{align*}
+			a^3b &= ba^3\\
+			(a^3*a^3)b &= (a^3*b)aa^3\\
+			a^5*ab &= ba^3a^3\\
+			e*ab &= b(a^3a^3)\\
+			ab &= ba\tag{Q.E.D}
+		\end{align*}
+	
+	\section{Exercise 11:}
+		\textbf{Prove that:} $G = (a\Z+b\Z, +)$ is a subgroup of $(\Z, +)$. Given that a, b are integers.\\
+		\textbf{Proof:}\\
+		Let $\mathbb{M} = a\Z+b\Z$. Thus, the elements of $\mathbb{M}$ satisfies that it is an integer.
+		\begin{enumerate}
+			\item [i)] 
+				It's trivial that $e=0$ is the identity element of $(\Z, +)$. Let $x \in \mathbb{M}$, we have $x+e = x+0 = X$. Thus, $G$ also has identity element $e=0$.
+			\item[ii)]
+				Let $y \in \mathbb{M}$, $x, y$ must satisfies that $x = ak+bl$; $y = ai+bj$ with $l, k, i, j \in \Z$.
+				Hence, $x+y = a(k+i) + b(l+j)$. This satisfies that $x+y \in \mathbb{M}$
+			\item[iii)]
+				Let $x^{-1}$ be the inverse element of $x$. By definition, $x*x^{-1} = e$\\ 
+				$\iff x + x^{-1} = 0 \iff x^{-1} = -x \iff x^{-1} = a(-k)+b(-l)$. Since there exist such $(-k), (-l) \in \R$, there also exists such $x^{-1} \in \mathbb{M}$.
+		\end{enumerate}
+		\textbf{Conclusion:} $G$ is subgroup of $(Z,+)$
+\end{document}
