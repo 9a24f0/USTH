@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\setcounter{secnumdepth}{0}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+	\centering
+	\LARGE\textbf{Tutorial \#4: Isomorphism}\\
+	
+	\justify\Large
+	
+	\section{Exercise 1:}
+		\begin{enumerate}
+			\item $f: (\R^*, .) \rightarrow (\R^{2\times2}, .)$; $f(x)= \begin{bmatrix}
+				x && 0\\
+				1 && 1
+			\end{bmatrix}$\\ 
+			Let $a,b \in \R^*$, \[
+			f(a) = \begin{bmatrix}
+						a && 0\\
+						0 && 1
+	  		\end{bmatrix},
+	  		f(b) = \begin{bmatrix}
+		  				b && 0\\
+		  				0 && 1
+	  		\end{bmatrix},
+	  		f(a)f(b) = \begin{bmatrix}
+		  				ab && 0\\
+		  				0 && 1
+	  		\end{bmatrix}	   
+	  		\]
+	  		Since $a,b \in (\R^*, .)$, $ab \in (\R^*, .)$ as the closure property of a group,
+	  		\[
+	  		f(ab) = \begin{bmatrix}
+	  					ab && 0\\
+	  					0 && 1
+	  		\end{bmatrix}
+	  		\]
+	  		Since $f(ab) = f(a)f(b)$, $f$ is homomorphism.\\
+	  		Kernel of $f = \{x: f(x) = e_H = \begin{bmatrix}
+		  										1 && 0\\
+		  										0 && 1
+	  		\end{bmatrix}\}$. Thus, $ker(f) = \{1\}$.
+	  		\item $f: (R, +) \rightarrow (R^{2\times2}, .)$; $f(x) = \begin{bmatrix}
+	  			1 && x\\
+	  			0 && 1
+	  		\end{bmatrix}$\\
+	  		Let $a, b \in \R$,
+	  		\[
+	  		f(a) = \begin{bmatrix}
+	  			1 && a\\
+	  			0 && 1
+	  		\end{bmatrix},
+	  		f(b) = \begin{bmatrix}
+	  			1 && b\\
+	  			0 && 1
+	  		\end{bmatrix},
+	  		f(a)f(b) = \begin{bmatrix}
+	  			1 && b+a\\
+	  			0 && 1
+	  		\end{bmatrix}
+	  		\]
+	  		Since $a,b \in (\R, +)$, $(a+b) \in (\R, +)$ as the closure property of the group,
+	  		\[
+	  		f(a+b) = \begin{bmatrix}
+		  		1 && a + b\\
+		  		0 && 1
+	  		\end{bmatrix}
+	  		\]
+	  		Since $f(a+b) = f(a)f(b)$, $f$ is homomorphism.\\
+	  		Kernel of $f = \{x: f(x) = e_H = \begin{bmatrix}
+		  		1 && 0\\
+		  		0 && 1
+	  		\end{bmatrix}\}$. Thus, $ker(f) = \{0\}$.
+		\end{enumerate}
+	
+	\section{Exercise 2:}
+		\textbf{Prove that:} $G = (\R\setminus\{-1\}, *)$ is an abelian group with $a*b=a+b+ab$.
+		\begin{enumerate}
+			\item [i)]
+				Let $a, b, c$ be arbitrary in $\R\setminus\{-1\}$, we have:
+				\begin{align*}
+					(a*b)*c = (a+b+ab)*c &= (a+b+ab) + c + (a+b+ab)c \\
+									 	 &= a+b+c +ab+bc+ac+abc\tag{1}
+				\end{align*}
+				\begin{align*}
+					a*(b*c) = a*(b+c+bc) &= a + (b+c+bc) + a(b+c+bc) \\
+									 	 &= a+b+c +ab+bc+ac+abc\tag{2}
+				\end{align*}
+				With (1) = (2), we conclude that $G$ is associative.
+			\item[ii)]
+				There exists $e=0$ such that $a*e = (a+0+a*0) = a$. Thus, G has identity element.
+			\item[iii)]
+				With arbitrary element $a \in \R\setminus\{-1\}$, there exists $a^{-1}$ is an inverse element of $a$. Indeed:
+				\begin{align*}
+					a*a^{-1} = e &\iff a+a^{-1}+aa^{-1} = 0\\
+								 &\iff a^{-1} = \frac{-a}{a+1}
+				\end{align*}
+			\item[iv)]
+				Since $a*b = a+b+ab = b+a+ba = b*a$, G is commutative.
+		\end{enumerate}
+		Hence, G is an abelian group.\\
+		\textbf{Prove that:} $f: (G, *) \rightarrow (\R\setminus\{0\}, .); f(x) = x + 1$ is homomorphism.\\
+		Since $f(a) = a+1, f(b) = b + 1$, $f(a)f(b) = (a+1)(b+1) = ab + a + b + 1.$\\
+		On the other hand, $f(a*b) = f(a+b+ab) = a + b + ab + 1$.\\
+		\textbf{Conclusion:} $f$ is homomorphism.
+		
+	\section{Exercise 3:}
+		\textbf{Prove that:} $\phi(g^n) = (\phi(g))^n$. Given that $g \in G$, $f:(G, *) \rightarrow (H, \circ)$.\\
+		\textbf{Base case:} When $n=2$, $\phi(g*g) = \phi(g)\circ\phi(g) \iff \phi(g^2) = (\phi(g))^2$. Thus, $\phi(g^n) = (\phi(g))^n$ holds for $n = 2$.\\
+		\textbf{Induction step:} Let $k \in \N$ be given and suppose that  $\phi(g^n) = (\phi(g))^n$ for $n = k$,
+		\begin{equation*}
+			\phi(g^{k+1}) = \phi(g^k*g) = (\phi(g))^k\circ\phi(g) = (\phi(g))^{k+1}
+		\end{equation*}
+		Hence, $\phi(g^n) = (\phi(g))^n$ and the proof of induction step is complete.
+		\textbf{Conclusion:} By the principle of induction, $\phi(g^n) = (\phi(g))^n, \forall n \in \N$
+	
+	\section{Exercise 4:} skip
+\end{document}
