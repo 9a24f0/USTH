@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = true
-[remote "origin"]
-	url = https://github.com/9a24f0/Software-Testing-2020-USTH.git
-	fetch = +refs/*:refs/*
-	mirror = true
