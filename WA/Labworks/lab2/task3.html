@@ -1,0 +1,18 @@
+<html>
+
+<body>
+    <p><input id="player">
+        <button onclick="Check()">Submit</button><br> Please input an integer number then click submit
+    </p>
+    <script>
+        var expected = Math.floor(Math.random() * 11);
+        console.log(expected);
+
+        function Check() {
+            if (document.getElementById("player").value == expected) alert("Good work!");
+            else alert("Not matched ")
+        }
+    </script>
+</body>
+
+</html>

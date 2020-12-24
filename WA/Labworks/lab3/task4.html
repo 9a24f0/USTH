@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Heading1</h1>
+    <h2>Heading2</h2>
+    <h3>Click on the paragraph to see the time between the two click events on the paragraph</h3>
+    <p>Paragraph</p>
+    <script>
+        var origin = 0;
+        $("p").click(function(event) {
+            if (origin == 0) {
+                origin = event.timeStamp;
+            } else {
+                var time_diff = event.timeStamp - origin;
+                origin = event.timeStamp;
+                alert("Time between the two click events on the paragraph is " + time_diff)
+            }
+        });
+    </script>
+</body>
+
+</html>

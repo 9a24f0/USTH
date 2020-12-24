@@ -1,0 +1,44 @@
+<html>
+
+<body>
+    <table>
+        <tr>
+            <th colspan="2" style="padding-bottom: 20px;">Multiply and Divide two numbers</th>
+        </tr>
+
+        <tr>
+            <td>1st Number:</td>
+            <th><input type="text" id="first"></th>
+        </tr>
+
+        <tr>
+            <td>2nd Number:</td>
+            <th><input type="text" id="second"></th>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="Multiply()">Multiply</button>
+                <button onclick="Devide()">Devide</button>
+            </td>
+        </tr>
+        <tr>
+            <td>The result is:</td>
+            <th><output id="result"></th>
+        </tr>
+    </table>
+    <script>
+        function Multiply() {
+            var a = document.getElementById("first").value;
+            var b = document.getElementById("second").value;
+            document.getElementById("result").value = a * b;
+        }
+
+        function Devide() {
+            var a = document.getElementById("first").value;
+            var b = document.getElementById("second").value;
+            document.getElementById("result").value = a / b;
+        }
+    </script>
+</body>
+
+</html>

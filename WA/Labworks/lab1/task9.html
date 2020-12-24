@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Table with CSS</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-color: white;
+        }
+        
+        tr,
+        th,
+        td {
+            padding: 10px 150px 10px 150px;
+            text-align: center;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #d0d8e8;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #e9edf4;
+        }
+        
+        tr:hover {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <tr style="background-color: #1f497d;">
+            <th>Subject</th>
+            <th>ECTs</th>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Chemistry</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>English</td>
+            <td>3</td>
+        </tr>
+    </table>
+</body>
+
+</html>

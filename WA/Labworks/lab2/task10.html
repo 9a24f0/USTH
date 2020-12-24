@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <style>
+        button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th colspan="2" style="padding-bottom: 20px;">Sign Up</th>
+        </tr>
+
+        <tr>
+            <td>Username:</td>
+            <th><input type="text"></th>
+        </tr>
+
+        <tr>
+            <td>Password:</td>
+            <th><input type="password" id="pass"></th>
+        </tr>
+        <tr>
+            <td>Re-type Password:</td>
+            <th><input type="password" id="repass"></th>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <button>Reset</button>
+                <button onclick="checkPassword()">Submit</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("pass").value;
+            var re_password = document.getElementById("repass").value;
+            if (password == re_password) alert("Good work!");
+            else alert("Your passwords are not matched");
+        }
+    </script>
+</body>
+
+</html>

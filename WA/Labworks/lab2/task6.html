@@ -1,0 +1,30 @@
+<script>
+    function sum(number) {
+        var remainder = 0;
+        var sum = 0;
+        while (number > 0) {
+            remainder = number % 10;
+            sum += (remainder * remainder);
+            number = (number - remainder) / 10;
+        }
+        return sum;
+    }
+
+    var i = 1;
+    var store = [];
+    while (store.length < 10) {
+        var result = i;
+        i++;
+
+        while (result !== 1 && result !== 4) {
+            result = sum(result);
+        }
+
+        if (result == 1) {
+            store.push(i - 1);
+        } else if (result == 4) {
+            continue;
+        }
+    }
+    alert("The first 10 happy numbers are: " + store);
+</script>

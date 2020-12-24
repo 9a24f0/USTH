@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/rules-p-fTfJtcPmQDwZG.js" async=""></script><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/quant.js" async="" type="text/javascript"></script><noscript><div><img src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/p-fTfJtcPmQDwZG.gif" alt="Quantcast" width="1" height="1" border="0"></div></noscript><script async="" type="text/javascript" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/cmp2.js"></script><script type="text/javascript" async="" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/videoplayer.js"></script>
+    <link href="https://cdn.thisiswaldo.com/" rel="dns-prefetch">
+    <link href="https://fonts.googleapis.com/" rel="dns-prefetch">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Linear Regression in Python with Scikit-Learn</title>
+    <meta name="HandheldFriendly" content="True">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- fav icons -->
+	<link rel="shortcut icon" href="https://stackabuse.com/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://stackabuse.com/assets/images/apple-touch-icon.png?v=ac3224ce2f">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://stackabuse.com/assets/images/favicon-32x32.png?v=ac3224ce2f">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://stackabuse.com/assets/images/favicon-16x16.png?v=ac3224ce2f">
+    <!-- header scripts -->
+    <script async="" type="text/javascript" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/gpt.js"></script><script async="" type="text/javascript" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/choice.js"></script><script async="" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/analytics.js"></script><script id="repixel" async="" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/r.js"></script><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/525232124909042.js" async=""></script><script async="" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/fbevents.js"></script><script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                var e = document.createElement("script");
+                e.type="text/javascript",
+                e.src="//cdn.thisiswaldo.com/static/js/3873.js",
+                document.getElementsByTagName("head")[0].appendChild(e);
+            }, 1000);
+        }, false);
+    </script>
+	<!-- stylesheets -->
+    <link href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/css.css" rel="stylesheet">
+	<link rel="stylesheet" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/bootstrap.css">
+	<link rel="stylesheet" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/screen.css">
+	<link rel="stylesheet" type="text/css" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/atom_one_dark.css">
+	<script>
+/*====================================================
+  THEME SETTINGS & GLOBAL VARIABLES
+====================================================*/
+//  1. Disqus comment settings
+var disqus_shortname = 'stackabuse'; // required: replace example with your forum shortname
+
+//	2. Sidebar Position
+var sidebar_left = false; // Set true or flase for positioning sidebar on left
+
+//  3. Recent Post count
+var recent_post_count = 3;
+
+//	4. Google+ badge settings
+var badge_type = 'page'; // person / page / community ----- three type of google badge
+var google_plus_url = 'https://plus.google.com/111813546240107028721';
+
+//	5. Facebook Page Setting
+var facebook_page_url = 'https://www.facebook.com/stackabuse';
+
+//	6. Twitter Setting
+var twitter_url = 'https://twitter.com/ScottWRobinson';
+var twitter_widget_id = '722928793669607425';
+var number_of_tweet = 3;
+
+//	7. Mailchimp signup form Setting
+var mailchimp_form_url = '//stackabuse.us10.list-manage.com/subscribe/post?u=90b216fdbe02b25619ec94fc3&amp;id=bc2bb312cd';
+var success_message = "Please check your inbox and confirm your email address. Thank you!";
+
+//	8. Flickr Setting
+//var flickr_id = '52617155@N08';
+var flickr_id = '';
+</script>
+    <link rel="shortcut icon" href="https://stackabuse.com/favicon.png" type="image/png">
+    <link rel="canonical" href="https://stackabuse.com/linear-regression-in-python-with-scikit-learn/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Stack Abuse">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Linear Regression in Python with Scikit-Learn">
+    <meta property="og:description" content="There are two types of supervised machine learning algorithms: Regression and
+classification. The former predicts continuous value outputs while the latter
+predicts discrete outputs. For instance, predicting the price of a house in
+dollars is a regression problem whereas predicting whether a tumor is malignant
+or benign is a classification problem.
+
+In this article we will briefly study what linear regression is and how it can
+be implemented using the Python Scikit-Learn library, which is one of">
+    <meta property="og:url" content="https://stackabuse.com/linear-regression-in-python-with-scikit-learn/">
+    <meta property="article:tag" content="python">
+    <meta property="article:tag" content="scikit-learn">
+    <meta property="article:tag" content="machine learning">
+    <meta property="article:tag" content="algorithms">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Linear Regression in Python with Scikit-Learn">
+    <meta name="twitter:description" content="There are two types of supervised machine learning algorithms: Regression and
+classification. The former predicts continuous value outputs while the latter
+predicts discrete outputs. For instance, predicting the price of a house in
+dollars is a regression problem whereas predicting whether a tumor is malignant
+or benign is a classification problem.
+
+In this article we will briefly study what linear regression is and how it can
+be implemented using the Python Scikit-Learn library, which is one of">
+    <meta name="twitter:url" content="https://stackabuse.com/linear-regression-in-python-with-scikit-learn/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Scott Robinson">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="python, scikit-learn, machine learning, algorithms">
+    <meta name="twitter:site" content="@ScottWRobinson">
+    <meta name="twitter:creator" content="@ScottWRobinson">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Stack Abuse",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Scott Robinson",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://stackabuse.com/content/images/2016/09/new-profile.jpg",
+            "width": 331,
+            "height": 363
+        },
+        "url": "https://stackabuse.com/author/scott/",
+        "sameAs": [
+            "https://twitter.com/ScottWRobinson"
+        ]
+    },
+    "headline": "Linear Regression in Python with Scikit-Learn",
+    "url": "https://stackabuse.com/linear-regression-in-python-with-scikit-learn/",
+    "keywords": "python, scikit-learn, machine learning, algorithms",
+    "description": "There are two types of supervised machine learning algorithms: Regression and\nclassification. The former predicts continuous value outputs while the latter\npredicts discrete outputs. For instance, predicting the price of a house in\ndollars is a regression problem whereas predicting whether a tumor is malignant\nor benign is a classification problem.\n\nIn this article we will briefly study what linear regression is and how it can\nbe implemented using the Python Scikit-Learn library, which is one of",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://stackabuse.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 2.23">
+    <link rel="alternate" type="application/rss+xml" title="Stack Abuse" href="https://stackabuse.com/rss/">
+    <!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '525232124909042');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=525232124909042&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- Repixel Code -->
+<script>
+  (function(w, d, s, id, src){
+  w.Repixel = r = {
+    init: function(id) {
+      w.repixelId = id;
+    }
+  };
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)){ return; }
+  js = d.createElement(s); 
+  js.id = id;
+  js.async = true;
+  js.onload = function(){
+      Repixel.init(w.repixelId);
+  };
+  js.src = src;
+  fjs.parentNode.insertBefore(js, fjs);
+  }(window, document, 'script', 'repixel', 
+  'https://sdk.repixel.co/r.js'));
+  Repixel.init('5cefff7fce3aad00089e44e5');
+</script>
+<!-- Repixel Code -->
+<script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/gumroad-overlay-5cd5fa5aa7830f92ada5da442cddac61faef15f0bd3f5.js"></script><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/gumroad-overlay-5cd5fa5aa7830f92ada5da442cddac61faef15f0bd3f5.js"></script><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/count-data.js"></script><style type="text/css">.hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script type="text/javascript" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/3873.js"></script><style type="text/css">#waldo-sticky-footer-wrapper {position: fixed; width: 100%; bottom: 0px; left: 0px; text-align: center; z-index: 9000;margin-bottom: 0 !important;}#waldo-sticky-footer-wrapper > div {position: relative; display: inline-block; margin-bottom: 0 !important;}#waldo-sticky-footer-wrapper iframe, #waldo-sticky-footer-wrapper div {margin-left: auto;margin-right: auto;}.waldo-sticky-sidebar{position: fixed; top: 10px;z-index: 90}.waldo-bfleft {position: fixed; left: 0; top: 10px;z-index:101;}.waldo-bfright {position: fixed; right: 0; top: 10px;z-index:101;}#nm-ccpa-widget {width: 400px;}#nm-ccpa-widget {position: fixed; right: 20px; z-index: 9999; margin-bottom: 15px;box-shadow: 0 3px 36px 0 rgba(0,0,0,0.3); background-color: #fff;border-radius: 10px;bottom: 20px;margin-top: 10px;font-size: 14px;}.nm-ccpa-widget-header {background: #179f84;color: #fff;padding: 20px;}.nm-ccpa-widget-header .nm-ccpa-widget-main-title {margin-bottom: 0;margin-top: 0;font-size: 16px;font-weight: bold;}.nm-ccpa-widget-body {padding: 20px;background: #fff;}.nm-ccpa-widget-body label {font-size: 16px;}.nm-ccpa-widget-submit-btn {margin-top: 15px;padding-left: 25px;}.nm-ccpa-widget-submit-btn input {background: #179f84;color: #fff;padding: 10px 20px;border-radius: 8px;border: 0;outline: 0;}.nm-ccpa-widget-submit-btn input:hover,.nm-ccpa-widget-submit-btn input:focus {cursor: pointer;}.nm-ccpa-widget-checkbox-label {font-size: 20px;}.nm-ccpa-widget-header {position: relative;}.nm-ccpa-widget-close-btn {position: absolute;right: 10px;top: 10px;}.nm-ccpa-widget-close-btn a {color: #fff;font-size: 20px;text-decoration: none;}.nm-ccpa-widget-message {padding-left: 25px;}#waldo-tag-6038 {clear: both !important;}div[class^="app_gdpr-"] a {color: #41afbb !important; text-decoration: underline !important}#waldo-close-button {position: absolute; right: 0;top: -24px;}#waldo-close-button a {border: 1px solid rgba(0,0,0,.35);padding: 3px;font-size: 12px;color: #fff;font-weight: bold;background-color: #777;}</style><script type="text/javascript">googletag.cmd.push(function() {googletag.pubads().addEventListener('slotRenderEnded', function(event) {waldoPassbackCheck(event);waldoAddCloseBtn(event);});googletag.pubads().enableSingleRequest();googletag.enableServices();gptAdSlots[3874] = googletag.defineSlot('/124067137/stackabuse300x250FL_1', [[300, 250], [300, 600]], 'waldo-tag-3874').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250], [300, 600]]).addSize([768, 0], [[300, 250], [300, 600]]).addSize([0, 0], [[300, 250], [300, 600]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3874');gptAdSlots[3878] = googletag.defineSlot('/124067137/stackabuse728x90FS_1', [[728, 90], [320, 50]], 'waldo-tag-3878').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[320, 50]]).addSize([0, 0], [[320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3878');gptAdSlots[3880] = googletag.defineSlot('/124067137/stackabuse728x90FS_2', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-3880').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3880');gptAdSlots[3884] = googletag.defineSlot('/124067137/stackabuse728x90FS_3', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-3884').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-3884');gptAdSlots[7184] = googletag.defineSlot('/124067137/stackabuse300x250FL_3', [[300, 250], [300, 600]], 'waldo-tag-7184').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250], [300, 600]]).addSize([768, 0], [[300, 250], [300, 600]]).addSize([0, 0], [[300, 250], [300, 600]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-7184');gptAdSlots[7611] = googletag.defineSlot('/124067137/stackabuse300x250FL_4', [[300, 250], [300, 600]], 'waldo-tag-7611').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250], [300, 600]]).addSize([768, 0], [[300, 250], [300, 600]]).addSize([0, 0], [[300, 250], [300, 600]]).build()).addService(googletag.pubads());googletag.display('waldo-tag-7611');});</script><script type="text/javascript" async="" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/recovery"></script><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/pubads_impl_2020111801.js" async=""></script><style type="text/css"> .qc-cmp-button.qc-cmp-secondary-button:hover {    background-color: #368bd6 !important;    border-color: transparent !important;  }  .qc-cmp-button.qc-cmp-secondary-button:hover {    color: #ffffff !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    color: #368bd6 !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    background-color: #eee !important;    border-color: transparent !important;  } </style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style id="up-pb-stylesheet" type="text/css">.up-pb-static { opacity: 0.001 !important; }</style><link rel="preload" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/integrator.js" as="script"><script type="text/javascript" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/integrator.js"></script><link rel="preload" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/integrator_002.js" as="script"><script type="text/javascript" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/integrator_002.js"></script><style id="UponitHideShow" type="text/css">.up-hide { display: none !important; }</style><style type="text/css">a.gumroad-button { background-color: white !important; background-image: url("https://gumroad.com/button/button_bar.jpg") !important; background-repeat: repeat-x !important; border-radius: 4px !important; box-shadow: rgba(0, 0, 0, 0.4) 0 0 2px !important; color: #999 !important; display: inline-block !important; font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-size: 16px !important; font-style: normal !important; font-weight: 500 !important; line-height: 50px !important; padding: 0 15px !important; text-shadow: none !important; text-decoration: none !important; } .gumroad-button-logo { background-image: url("https://gumroad.com/button/button_logo.png") !important; background-size: cover !important; height: 17px !important; width: 16px !important; display: inline-block !important; margin-bottom: -3px !important; margin-right: 15px !important; } .gumroad-loading-indicator { background: white; border-radius: 50%; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); box-sizing: border-box; display: none; height: 60px; left: 50% !important; margin-left: -30px !important; margin-top: -30px !important; padding: 10px; position: fixed; top: 50% !important; width: 60px; z-index: 99997; } .gumroad-loading-indicator i { background: url("https://gumroad.com/js/loading-rainbow.svg"); height: 40px; width: 40px; display: inline-block; background-size: contain; animation: gumroad-spin 1.5s infinite linear; } .gumroad-scroll-container { -webkit-overflow-scrolling: touch; overflow-y: auto; position: fixed !important; z-index: 99998 !important; top: 0 !important; right: 0 !important; -ms-overflow-style: none; scrollbar-width: none; } .gumroad-scroll-container::-webkit-scrollbar { display: none; } .gumroad-overlay-iframe { position: absolute; min-width: 100%; min-height: 100%; border: none !important; text-align: left; } @keyframes gumroad-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(359deg); } } </style><script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/embed.js" data-timestamp="1606433971595"></script><link rel="prefetch" as="style" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/a_data/lounge.css"><link rel="prefetch" as="script" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/a_data/common.js"><link rel="prefetch" as="script" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/a_data/lounge.js"><link rel="prefetch" as="script" href="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/a_data/config.js"></head>
+<body class="post-template tag-python tag-scikit-learn tag-machine-learning tag-algorithms"><div id="MathJax_Message" style="display: none;"></div>
+    <nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="https://stackabuse.com/">Stack <span style="color:#f16334;">Abuse</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" role="navigation" aria-label="Site navigation">
+	<li class="nav-javascript"><a href="https://stackabuse.com/tag/javascript/">JavaScript</a></li>
+	<li class="nav-python"><a href="https://stackabuse.com/tag/python">Python</a></li>
+	<li class="nav-java"><a href="https://stackabuse.com/tag/java/">Java</a></li>
+    <li class="nav-hireremote">
+        <a rel="noopener nofollow" target="_blank" href="https://hireremote.io/" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Nav-Link">
+            Jobs
+        </a>
+    </li>
+</ul>
+
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+    <div class="text-center" style="color:#dddddd;margin-top:-20px;padding-top:7px;padding-bottom:7px;position:sticky;top:0;background-color:#404040;z-index:10;">
+        Get <em>35%</em> off
+        <a class="ebook-link" target="_blank" rel="noopener" href="https://gum.co/data-visualization-in-python" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">Data Visualization in Python</a>
+        for Black Friday weekend! 👉
+        &nbsp;
+        <a class="ebook-link btn btn-default" target="_blank" rel="noopener" href="https://gum.co/data-visualization-in-python" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">
+            Learn more
+        </a>
+    </div>
+
+    <!-- start site's main content area -->
+<section class="content-wrap">
+	<div class="container">
+		<div class="row">
+			<!-- start main post area -->
+			<div class="col-md-8 main-content">
+				<!-- start post -->
+				<article id="5d2e2f5a2ad4a010f9ee6209" class="post tag-python tag-scikit-learn tag-machine-learning tag-algorithms">
+					<div class="post-head">
+						<h2 class="post-title">Linear Regression in Python with Scikit-Learn</h2>
+						<div class="post-meta">
+							<span class="author">
+                                By
+                                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/ScottWRobinson">
+                                    <i class="fa fa-twitter" style="color:#55acee;"></i>
+                                    Scott Robinson
+                                </a>
+                            </span> •
+							<span class="comment-count"><a href="https://stackabuse.com/linear-regression-in-python-with-scikit-learn/#disqus_thread">27 Comments</a></span>
+						</div>
+					</div>
+                    <div class="post-ad">
+                        <!-- 728x90/320x50 -->
+<div id="waldo-tag-3878" data-processed="true" data-guard-element="true" class="up-hide" style=""><div id="google_ads_iframe_/124067137/stackabuse728x90FS_1_0__container__" style="border: 0pt none; width: 728px; height: 90px;"></div></div>                    </div>
+					<div class="post-content">
+						<!--kg-card-begin: markdown--><!--kg-card-begin: markdown--><p>There
+ are two types of supervised machine learning algorithms: Regression and
+ classification. The former predicts continuous value outputs while the 
+latter predicts discrete outputs. For instance, predicting the price of a
+ house in dollars is a regression problem whereas predicting whether a 
+tumor is malignant or benign is a classification problem.</p>
+<p>In this article we will briefly study what linear regression is and 
+how it can be implemented using the Python Scikit-Learn library, which 
+is one of the most popular machine learning libraries for Python.</p>
+<h3 id="linearregressiontheory">Linear Regression Theory</h3>
+<p>The term "linearity" in algebra refers to a linear relationship 
+between two or more variables. If we draw this relationship in a two 
+dimensional space (between two variables, in this case), we get a 
+straight line.</p>
+<p>Let's consider a scenario where we want to determine the linear 
+relationship between the numbers of hours a student studies and the 
+percentage of marks that student scores in an exam. We want to find out 
+that given the number of hours a student prepares for a test, about how 
+high of a score can the student achieve? If we plot the independent 
+variable (hours) on the x-axis and dependent variable (percentage) on 
+the y-axis, linear regression gives us a straight line that best fits 
+the data points, as shown in the figure below.</p>
+<img alt="Study hours and test scores plot" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/linear-regression-python-scikit-learn-1.png" class="img-responsive">
+<p>We know that the equation of a straight line is basically:</p>
+<pre><code class="hljs">y = mx + b
+</code></pre>
+<p>Where <code>b</code> is the intercept and <code>m</code> is the slope
+ of the line. So basically, the linear regression algorithm gives us the
+ most optimal value for the intercept and the slope (in two dimensions).
+ The <code>y</code> and <code>x</code> variables remain the same, since 
+they are the data features and cannot be changed. The values that we can
+ control are the intercept and slope. There can be multiple straight 
+lines depending upon the values of intercept and slope. Basically what 
+the linear regression algorithm does is it fits multiple lines on the 
+data points and returns the line that results in the least error.</p>
+<p>This same concept can be extended to the cases where there are more 
+than two variables. This is called multiple linear regression. For 
+instance, consider a scenario where you have to predict the price of 
+house based upon its area, number of bedrooms, average income of the 
+people in the area, the age of the house, and so on. In this case the 
+dependent variable is dependent upon several independent variables. A 
+regression model involving multiple variables can be represented as:</p>
+<pre>    <code class="hljs">
+        y = b<sub>0</sub> + m<sub>1</sub>b<sub>1</sub> + m<sub>2</sub>b<sub>2</sub> + m<sub>3</sub>b<sub>3</sub> + ... ... m<sub>n</sub>b<sub>n</sub>
+    </code>
+</pre>
+<p>This is the equation of a hyper plane. Remember, a linear regression 
+model in two dimensions is a straight line; in three dimensions it is a 
+plane, and in more than three dimensions, a hyper plane.</p>
+<h3 id="linearregressionwithpythonscikitlearn">Linear Regression with Python Scikit Learn</h3>
+<p>In this section we will see how the Python Scikit-Learn library for 
+machine learning can be used to implement regression functions. We will 
+start with simple linear regression involving two variables and then we 
+will move towards linear regression involving multiple variables.</p>
+<h4 id="simplelinearregression">Simple Linear Regression</h4>
+<p>In this regression task we will predict the percentage of marks that a
+ student is expected to score based upon the number of hours they 
+studied. This is a simple linear regression task as it involves just two
+ variables.</p>
+<h5 id="importinglibraries">Importing Libraries</h5>
+<p>To import necessary libraries for this task, execute the following import statements:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+%matplotlib inline
+</code></pre>
+<p><strong>Note</strong>: As you may have noticed from the above import statements, this code was executed using a Jupyter iPython Notebook.</p>
+<h5 id="dataset">Dataset</h5>
+<p>The dataset being used for this example has been made publicly available and can be downloaded from this link:</p>
+<p><a rel="nofollow noopener" target="_blank" href="https://drive.google.com/open?id=1oakZCv7g3mlmCSdv9J8kdSaqO5_6dIOw">https://drive.google.com/open?id=1oakZCv7g3mlmCSdv9J8kdSaqO5_6dIOw</a></p>
+<p>Note: This example was executed on a Windows based machine and the 
+dataset was stored in "D:\datasets" folder. You can download the file in
+ a different location as long as you change the dataset path 
+accordingly.</p>
+<p>The following command imports the CSV dataset using pandas:</p>
+<pre><code class="language-python hljs">dataset = pd.read_csv(<span class="hljs-string">'D:\Datasets\student_scores.csv'</span>)
+</code></pre>
+<p>Now let's explore our dataset a bit. To do so, execute the following script:</p>
+<pre><code class="language-python hljs">dataset.shape
+</code></pre>
+<p>After doing this, you should see the following printed out:</p>
+<pre><code class="hljs">(25, 2)
+</code></pre>
+<p>This means that our dataset has 25 rows and 2 columns. Let's take a 
+look at what our dataset actually looks like. To do this, use the <code>head()</code> method:</p>
+<pre><code class="language-python hljs">dataset.head()
+</code></pre>
+<p>The above method retrieves the first 5 records from our dataset, which will look like this:</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Hours</th>
+            <th>Scores</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>0</th>
+            <td>2.5</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>5.1</td>
+            <td>47</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>3.2</td>
+            <td>27</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>8.5</td>
+            <td>75</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td>3.5</td>
+            <td>30</td>
+        </tr>
+    </tbody>
+</table>
+<p>To see statistical details of the dataset, we can use <code>describe()</code>:</p>
+<pre><code class="language-python hljs">dataset.describe()
+</code></pre>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Hours</th>
+            <th>Scores</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>count</th>
+            <td>25.000000</td>
+            <td>25.000000</td>
+        </tr>
+        <tr>
+            <th>mean</th>
+            <td>5.012000</td>
+            <td>51.480000</td>
+        </tr>
+        <tr>
+            <th>std</th>
+            <td>2.525094</td>
+            <td>25.286887</td>
+        </tr>
+        <tr>
+            <th>min</th>
+            <td>1.100000</td>
+            <td>17.000000</td>
+        </tr>
+        <tr>
+            <th>25%</th>
+            <td>2.700000</td>
+            <td>30.000000</td>
+        </tr>
+        <tr>
+            <th>50%</th>
+            <td>4.800000</td>
+            <td>47.000000</td>
+        </tr>
+        <tr>
+            <th>75%</th>
+            <td>7.400000</td>
+            <td>75.000000</td>
+        </tr>
+        <tr>
+            <th>max</th>
+            <td>9.200000</td>
+            <td>95.000000</td>
+        </tr>
+    </tbody>
+</table>
+<p>And finally, let's plot our data points on 2-D graph to eyeball our 
+dataset and see if we can manually find any relationship between the 
+data. We can create the plot with the following script:</p>
+<pre><code class="language-python hljs">dataset.plot(x=<span class="hljs-string">'Hours'</span>, y=<span class="hljs-string">'Scores'</span>, style=<span class="hljs-string">'o'</span>)
+plt.title(<span class="hljs-string">'Hours vs Percentage'</span>)
+plt.xlabel(<span class="hljs-string">'Hours Studied'</span>)
+plt.ylabel(<span class="hljs-string">'Percentage Score'</span>)
+plt.show()
+</code></pre>
+<p>In the script above, we use <code>plot()</code> function of the pandas dataframe and pass it the column names for <code>x</code> coordinate and <code>y</code> coordinate, which are "Hours" and "Scores" respectively.</p>
+<p>The resulting plot will look like this:</p>
+<img alt="Study hours and test scores plot" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/linear-regression-python-scikit-learn-2.png" class="img-responsive">
+<p>From the graph above, we can clearly see that there is a positive 
+linear relation between the number of hours studied and percentage of 
+score.</p>
+<h5 id="preparingthedata">Preparing the Data</h5>
+<p>Now we have an idea about statistical details of our data. The next 
+step is to divide the data into "attributes" and "labels". Attributes 
+are the independent variables while labels are dependent variables whose
+ values are to be predicted. In our dataset we only have two columns. We
+ want to predict the percentage score depending upon the hours studied. 
+Therefore our attribute set will consist of the "Hours" column, and the 
+label will be the "Score" column. To extract the attributes and labels, 
+execute the following script:</p>
+<pre><code class="language-python hljs">X = dataset.iloc[:, :<span class="hljs-number">-1</span>].values
+y = dataset.iloc[:, <span class="hljs-number">1</span>].values
+</code></pre>
+<p>The attributes are stored in the <code>X</code> variable. We specified "-1" as the range for columns since we wanted our attribute set to contain <em>all</em> the columns except the last one, which is "Scores". Similarly the <code>y</code>
+ variable contains the labels. We specified 1 for the label column since
+ the index for "Scores" column is 1. Remember, the column indexes start 
+with 0, with 1 being the second column. In the next section, we will see
+ a better way to specify columns for attributes and labels.</p><div><!-- 728x90/300x250/320x50 --><div id="waldo-tag-3880" data-processed="true" data-guard-element="true" class="up-hide" style=""><div id="google_ads_iframe_/124067137/stackabuse728x90FS_2_0__container__" style="border: 0pt none; width: 728px; height: 90px;"></div></div></div>
+<p>Now that we have our attributes and labels, the next step is to split
+ this data into training and test sets. We'll do this by using 
+Scikit-Learn's built-in <code>train_test_split()</code> method:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">0</span>)
+</code></pre>
+<p>The above script splits 80% of the data to training set while 20% of the data to test set. The <code>test_size</code> variable is where we actually specify the proportion of test set.</p>
+<h5 id="trainingthealgorithm">Training the Algorithm</h5>
+<p>We have split our data into training and testing sets, and now is 
+finally the time to train our algorithm. Execute following command:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+</code></pre>
+<p>With Scikit-Learn it is extremely straight forward to implement 
+linear regression models, as all you really need to do is import the <code>LinearRegression</code> class, instantiate it, and call the <code>fit()</code>
+ method along with our training data. This is about as simple as it gets
+ when using a machine learning library to train on your data.</p>
+<p>In the theory section we said that linear regression model basically 
+finds the best value for the intercept and slope, which results in a 
+line that best fits the data. To see the value of the intercept and slop
+ calculated by the linear regression algorithm for our dataset, execute 
+the following code.</p>
+<p>To retrieve the intercept:</p>
+<pre><code class="language-python hljs">print(regressor.intercept_)
+</code></pre>
+<p>The resulting value you see should be approximately 2.01816004143.</p>
+<p>For retrieving the slope (coefficient of x):</p>
+<pre><code class="language-python hljs">print(regressor.coef_)
+</code></pre>
+<p>The result should be approximately 9.91065648.</p>
+<p>This means that for every one unit of change in hours studied, the 
+change in the score is about 9.91%. Or in simpler words, if a student 
+studies one hour more than they previously studied for an exam, they can
+ expect to achieve an increase of 9.91% in the score achieved by the 
+student previously.</p>
+<h5 id="makingpredictions">Making Predictions</h5>
+<p>Now that we have trained our algorithm, it's time to make some 
+predictions. To do so, we will use our test data and see how accurately 
+our algorithm predicts the percentage score. To make pre-dictions on the
+ test data, execute the following script:</p>
+<pre><code class="language-python hljs">y_pred = regressor.predict(X_test)
+</code></pre>
+<p>The <code>y_pred</code> is a numpy array that contains all the predicted values for the input values in the <code>X_test</code> series.</p>
+<p>To compare the actual output values for <code>X_test</code> with the predicted values, execute the following script:</p>
+<pre><code class="language-python hljs">df = pd.DataFrame({<span class="hljs-string">'Actual'</span>: y_test, <span class="hljs-string">'Predicted'</span>: y_pred})
+df
+</code></pre>
+<p>The output looks like this:</p>
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate="">
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe" ga-on="click" ga-event-category="Newsletter" ga-event-action="Signup" ga-event-label="General-Newsletter-Signup">
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Actual</th>
+            <th>Predicted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>0</th>
+            <td>20</td>
+            <td>16.884145</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>27</td>
+            <td>33.732261</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>69</td>
+            <td>75.357018</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>30</td>
+            <td>26.794801</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td>62</td>
+            <td>60.491033</td>
+        </tr>
+    </tbody>
+</table>
+<p>Though our model is not very precise, the predicted percentages are close to the actual ones.</p>
+<p><strong>Note</strong>:</p>
+<p>The values in the columns above may be different in your case because the <code>train_test_split</code>
+ function randomly splits data into train and test sets, and your splits
+ are likely different from the one shown in this article.</p>
+<h5 id="evaluatingthealgorithm">Evaluating the Algorithm</h5>
+<p>The final step is to evaluate the performance of algorithm. This step
+ is particularly important to compare how well different algorithms 
+perform on a particular dataset. For regression algorithms, three 
+evaluation metrics are commonly used:</p>
+<ol>
+<li>Mean Absolute Error (MAE) is the mean of the absolute value of the errors. It is calculated as:</li>
+</ol>
+ <img alt="Mean Absolute Error" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/linear-regression-python-scikit-learn-3.png" class="img-responsive">
+<ol start="2">
+<li>Mean Squared Error (MSE) is the mean of the squared errors and is calculated as:</li>
+</ol>
+ <img alt="Mean Squared Error" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/linear-regression-python-scikit-learn-4.png" class="img-responsive">
+<ol start="3">
+<li>Root Mean Squared Error (RMSE) is the square root of the mean of the squared errors:</li>
+</ol>
+ <img alt="Root Mean Squared Error" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/linear-regression-python-scikit-learn-5.png" class="img-responsive">
+<p>Luckily, we don't have to perform these calculations manually. The 
+Scikit-Learn library comes with pre-built functions that can be used to 
+find out these values for us.</p>
+<p>Let's find the values for these metrics using our test data. Execute the following code:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> metrics
+print(<span class="hljs-string">'Mean Absolute Error:'</span>, metrics.mean_absolute_error(y_test, y_pred))
+print(<span class="hljs-string">'Mean Squared Error:'</span>, metrics.mean_squared_error(y_test, y_pred))
+print(<span class="hljs-string">'Root Mean Squared Error:'</span>, np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+</code></pre>
+<p>The output will look similar to this (but probably slightly different):</p>
+<pre><code class="hljs">Mean Absolute Error: 4.183859899
+Mean Squared Error: 21.5987693072
+Root Mean Squared Error: 4.6474476121
+</code></pre>
+<p>You can see that the value of root mean squared error is 4.64, which 
+is less than 10% of the mean value of the percentages of all the 
+students i.e. 51.48. This means that our algorithm did a decent job.</p>
+<h4 id="multiplelinearregression">Multiple Linear Regression</h4>
+<p>In the previous section we performed linear regression involving two 
+variables. Almost all real world problems that you are going to 
+encounter will have more than two variables. Linear regression involving
+ multiple variables is called "multiple linear regression". The steps to
+ perform multiple linear regression are almost similar to that of simple
+ linear regression. The difference lies in the evaluation. You can use 
+it to find out which factor has the highest impact on the predicted 
+output and how different variables relate to each other.</p>
+<p>In this section we will use multiple linear regression to predict the
+ gas consumptions (in millions of gallons) in 48 US states based upon 
+gas taxes (in cents), per capita income (dollars), paved highways (in 
+miles) and the proportion of population that has a drivers license.</p>
+<p>The details of the dataset can be found at this link:</p>
+<p><a href="http://people.sc.fsu.edu/~jburkardt/datasets/regression/x16.txt">http://people.sc.fsu.edu/~jburkardt/datasets/regression/x16.txt</a></p>
+<p>The first two columns in the above dataset do not provide any useful 
+information, therefore they have been removed from the dataset file. Now
+ let's develop a regression model for this task.</p>
+<h5 id="importingthelibraries">Importing the Libraries</h5>
+<p>The following script imports the necessary libraries:</p><div><!-- 728x90/300x250/320x50 --><div id="waldo-tag-3884" data-processed="true" data-guard-element="true" class="up-hide" style=""><div id="google_ads_iframe_/124067137/stackabuse728x90FS_3_0__container__" style="border: 0pt none; width: 728px; height: 90px;"></div></div></div>
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+%matplotlib inline
+</code></pre>
+<h5 id="dataset">Dataset</h5>
+<p>The dataset for this example is available at:</p>
+<p><a rel="nofollow noopener" target="_blank" href="https://drive.google.com/open?id=1mVmGNx6cbfvRHC_DvF12ZL3wGLSHD9f_">https://drive.google.com/open?id=1mVmGNx6cbfvRHC_DvF12ZL3wGLSHD9f_</a></p>
+<p>The following command imports the dataset from the file you downloaded via the link above:</p>
+<pre><code class="language-python hljs">dataset = pd.read_csv(<span class="hljs-string">'D:\Datasets\petrol_consumption.csv'</span>)
+</code></pre>
+<p>Just like last time, let's take a look at what our dataset actually looks like. Execute the <code>head()</code> command:</p>
+<pre><code class="language-python hljs">dataset.head()
+</code></pre>
+<p>The first few lines of our dataset looks like this:</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Petrol_tax</th>
+            <th>Average_income</th>
+            <th>Paved_Highways</th>
+            <th>Population_Driver_license(%)</th>
+            <th>Petrol_Consumption</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>0</th>
+            <td>9.0</td>
+            <td>3571</td>
+            <td>1976</td>
+            <td>0.525</td>
+            <td>541</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>9.0</td>
+            <td>4092</td>
+            <td>1250</td>
+            <td>0.572</td>
+            <td>524</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>9.0</td>
+            <td>3865</td>
+            <td>1586</td>
+            <td>0.580</td>
+            <td>561</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>7.5</td>
+            <td>4870</td>
+            <td>2351</td>
+            <td>0.529</td>
+            <td>414</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td>8.0</td>
+            <td>4399</td>
+            <td>431</td>
+            <td>0.544</td>
+            <td>410</td>
+        </tr>
+    </tbody>
+</table>
+<p>To see statistical details of the dataset, we'll use the <code>describe()</code> command again:</p>
+<pre><code class="language-python hljs">dataset.describe()
+</code></pre>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Petrol_tax</th>
+            <th>Average_income</th>
+            <th>Paved_Highways</th>
+            <th>Population_Driver_license(%)</th>
+            <th>Petrol_Consumption</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>count</th>
+            <td>48.000000</td>
+            <td>48.000000</td>
+            <td>48.000000</td>
+            <td>48.000000</td>
+            <td>48.000000</td>
+        </tr>
+        <tr>
+            <th>mean</th>
+            <td>7.668333</td>
+            <td>4241.833333</td>
+            <td>5565.416667</td>
+            <td>0.570333</td>
+            <td>576.770833</td>
+        </tr>
+        <tr>
+            <th>std</th>
+            <td>0.950770</td>
+            <td>573.623768</td>
+            <td>3491.507166</td>
+            <td>0.055470</td>
+            <td>111.885816</td>
+        </tr>
+        <tr>
+            <th>min</th>
+            <td>5.000000</td>
+            <td>3063.000000</td>
+            <td>431.000000</td>
+            <td>0.451000</td>
+            <td>344.000000</td>
+        </tr>
+        <tr>
+            <th>25%</th>
+            <td>7.000000</td>
+            <td>3739.000000</td>
+            <td>3110.250000</td>
+            <td>0.529750</td>
+            <td>509.500000</td>
+        </tr>
+        <tr>
+            <th>50%</th>
+            <td>7.500000</td>
+            <td>4298.000000</td>
+            <td>4735.500000</td>
+            <td>0.564500</td>
+            <td>568.500000</td>
+        </tr>
+        <tr>
+            <th>75%</th>
+            <td>8.125000</td>
+            <td>4578.750000</td>
+            <td>7156.000000</td>
+            <td>0.595250</td>
+            <td>632.750000</td>
+        </tr>
+        <tr>
+            <th>max</th>
+            <td>10.00000</td>
+            <td>5342.000000</td>
+            <td>17782.000000</td>
+            <td>0.724000</td>
+            <td>986.000000</td>
+        </tr>
+    </tbody>
+</table>
+<h5 id="preparingthedata">Preparing the Data</h5>
+<p>The next step is to divide the data into attributes and labels as we 
+did previously. However, unlike last time, this time around we are going
+ to use column names for creating an attribute set and label. Execute 
+the following script:</p>
+<pre><code class="language-python hljs">X = dataset[[<span class="hljs-string">'Petrol_tax'</span>, <span class="hljs-string">'Average_income'</span>, <span class="hljs-string">'Paved_Highways'</span>,
+       <span class="hljs-string">'Population_Driver_licence(%)'</span>]]
+y = dataset[<span class="hljs-string">'Petrol_Consumption'</span>]
+</code></pre>
+<p>Execute the following code to divide our data into training and test sets:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">0</span>)
+</code></pre>
+<h5 id="trainingthealgorithm">Training the Algorithm</h5>
+<p>And finally, to train the algorithm we execute the same code as before, using the <code>fit()</code> method of the <code>LinearRegression</code> class:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+</code></pre>
+<p>As said earlier, in case of multivariable linear regression, the 
+regression model has to find the most optimal coefficients for all the 
+attributes. To see what coefficients our regression model has chosen, 
+execute the following script:</p>
+<pre><code class="language-python hljs">coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=[<span class="hljs-string">'Coefficient'</span>])
+coeff_df
+</code></pre>
+<p>The result should look something like this:</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Coefficient</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Petrol_tax</th>
+            <td>-24.196784</td>
+        </tr>
+        <tr>
+            <th>Average_income</th>
+            <td>-0.81680</td>
+        </tr>
+        <tr>
+            <th>Paved_Highways</th>
+            <td>-0.000522</td>
+        </tr>
+        <tr>
+            <th>Population_Driver_license(%)</th>
+            <td>1324.675464</td>
+        </tr>
+    </tbody>
+</table>
+<p>This means that for a unit increase in "petrol_tax", there is a 
+decrease of 24.19 million gallons in gas consumption. Similarly, a unit 
+increase in proportion of population with a drivers license results in 
+an increase of 1.324 billion gallons of gas consumption. We can see that
+ "Average_income" and "Paved_Highways" have a very little effect on the 
+gas consumption.</p>
+<h5 id="makingpredictions">Making Predictions</h5>
+<p>To make pre-dictions on the test data, execute the following script:</p>
+<pre><code class="language-python hljs">y_pred = regressor.predict(X_test)
+</code></pre>
+<p>To compare the actual output values for <code>X_test</code> with the predicted values, execute the following script:</p>
+<pre><code class="language-python hljs">df = pd.DataFrame({<span class="hljs-string">'Actual'</span>: y_test, <span class="hljs-string">'Predicted'</span>: y_pred})
+df
+</code></pre>
+<p>The output looks like this:</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Actual</th>
+            <th>Predicted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>36</th>
+            <td>640</td>
+            <td>643.176639</td>
+        </tr>
+        <tr>
+            <th>22</th>
+            <td>464</td>
+            <td>411.950913</td>
+        </tr>
+        <tr>
+            <th>20</th>
+            <td>649</td>
+            <td>683.712762</td>
+        </tr>
+        <tr>
+            <th>38</th>
+            <td>648</td>
+            <td>728.049522</td>
+        </tr>
+        <tr>
+            <th>18</th>
+            <td>865</td>
+            <td>755.473801</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>524</td>
+            <td>559.135132</td>
+        </tr>
+        <tr>
+            <th>44</th>
+            <td>782</td>
+            <td>671.916474</td>
+        </tr>
+        <tr>
+            <th>21</th>
+            <td>540</td>
+            <td>550.633557</td>
+        </tr>
+        <tr>
+            <th>16</th>
+            <td>603</td>
+            <td>594.425464</td>
+        </tr>
+        <tr>
+            <th>45</th>
+            <td>510</td>
+            <td>525.038883</td>
+        </tr>
+    </tbody>
+</table>
+<h5 id="evaluatingthealgorithm">Evaluating the Algorithm</h5>
+<p>The final step is to evaluate the performance of algorithm. We'll do this by finding the values for <a rel="nofollow noopener" target="_blank" href="https://en.wikipedia.org/wiki/Mean_absolute_error">MAE</a>, <a rel="nofollow noopener" target="_blank" href="https://en.wikipedia.org/wiki/Mean_squared_error">MSE</a> and <a rel="nofollow noopener" target="_blank" href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">RMSE</a>. Execute the following script:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> metrics
+print(<span class="hljs-string">'Mean Absolute Error:'</span>, metrics.mean_absolute_error(y_test, y_pred))
+print(<span class="hljs-string">'Mean Squared Error:'</span>, metrics.mean_squared_error(y_test, y_pred))
+print(<span class="hljs-string">'Root Mean Squared Error:'</span>, np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+</code></pre>
+<p>The output will look similar to this:</p>
+<pre><code class="hljs">Mean Absolute Error: 45.8979842541
+Mean Squared Error: 3609.37119141
+Root Mean Squared Error: 60.0780425065
+</code></pre>
+<p>You can see that the value of root mean squared error is 60.07, which
+ is slightly greater than 10% of the mean value of the gas consumption 
+in all states. This means that our algorithm was not very accurate but 
+can still make reasonably good predictions.</p>
+<p>There are many factors that may have contributed to this inaccuracy, a few of which are listed here:</p>
+<ol>
+<li>Need more data: Only one year worth of data isn't that much, whereas
+ having multiple years worth could have helped us improve the accuracy 
+quite a bit.</li>
+<li>Bad assumptions: We made the assumption that this data has a linear 
+relationship, but that might not be the case. Visualizing the data may 
+help you determine that.</li>
+<li>Poor features: The features we used may not have had a high enough correlation to the values we were trying to predict.</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>In this article we studied on of the most fundamental machine 
+learning algorithms i.e. linear regression. We implemented both simple 
+linear regression and multiple linear regression with the help of the 
+Scikit-Learn machine learning library.</p>
+<p>There are a few things you can do from here:</p>
+<ul>
+<li>Play around with the code and data in this article to see if you can
+ improve the results (try changing the training/test size, 
+transform/scale input features, etc.)</li>
+<li>Seek out some more complete resources on machine learning techniques, like the <a class="udemy-link" rel="nofollow noopener" target="_blank" href="http://stackabu.se/deep-learning-hands-on-ann" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="Udemy-Link">Deep Learning A-Z: Hands-On Artificial Neural Networks</a> and <a class="udemy-link" rel="nofollow noopener" target="_blank" href="http://stackabu.se/python-data-science-machine-learning-bootcamp" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="Udemy-Link">Python for Data Science and Machine Learning Bootcamp</a> courses, which will also teach you how to use Scikit-Learn and other popular ML libraries</li>
+<li>Download and play with some other <a rel="nofollow noopener" target="_blank" href="https://archive.ics.uci.edu/ml/datasets.php?format=&amp;task=reg&amp;att=&amp;area=&amp;numAtt=&amp;numIns=&amp;type=&amp;sort=nameUp&amp;view=table">regression datasets</a> to see what kind of results you can get out of those. The more experience the better!</li>
+</ul>
+<p><em>Have you used Scikit-Learn or linear regression on any problems 
+in the past? If so, what was it and what were the results? Let us know 
+in the comments!</em></p>
+<!--kg-card-end: markdown--><!--kg-card-end: markdown-->
+					</div>
+					<footer class="post-footer clearfix">
+						<div class="pull-left tag-list">
+							<i class="fa fa-folder-open-o"></i>
+							<a href="https://stackabuse.com/tag/python/">python</a>,<a href="https://stackabuse.com/tag/scikit-learn/">scikit-learn</a>,<a href="https://stackabuse.com/tag/machine-learning/">machine learning</a>,<a href="https://stackabuse.com/tag/algorithms/">algorithms</a>
+						</div>
+						<div class="pull-right share">
+							<div>
+	<ul class="share-icons">
+		<!-- twitter -->
+		<li>
+			<a aria-label="Share on Twitter" href="https://twitter.com/share?text=Linear%20Regression%20in%20Python%20with%20Scikit-Learn&amp;url=https://stackabuse.com/linear-regression-in-python-with-scikit-learn/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter" style="color:#55acee;"></i></a>
+		</li>
+		<!-- facebook -->
+		<li>
+			<a aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://stackabuse.com/linear-regression-in-python-with-scikit-learn/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook" style="color:#3b5998;"></i></a>
+		</li>
+		<!-- linkedin -->
+		<li>
+			<a aria-label="Share on Linkedin" href="https://www.linkedin.com/shareArticle?mini=true%26url=https://stackabuse.com/linear-regression-in-python-with-scikit-learn/%26source=https://stackabuse.com" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=530');return false;"><i class="fa fa-linkedin" style="color:#0077b5;"></i></a>
+		</li>
+	</ul>
+</div>
+						</div>
+					</footer>
+                    <!-- start about the author -->
+<div class="about-author clearfix">
+		<a href="https://stackabuse.com/author/scott/"><img src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/new-profile.jpg" alt="Author image" class="avatar pull-left"></a>
+	<div class="details">
+		<div class="author">
+			About <a href="https://stackabuse.com/author/scott/">Scott Robinson</a>
+		</div>
+		<div class="meta-info" style="font-style: normal;">
+			<span>
+                <i class="fa fa-twitter" style="color:#55acee;"></i>
+                <a rel="noopener nofollow" href="https://twitter.com/ScottWRobinson" target="_BLANK">Twitter</a>
+            </span>
+		</div>
+	</div>
+</div>
+<!-- end about the author -->
+				</article>
+                <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate="">
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe" ga-on="click" ga-event-category="Newsletter" ga-event-action="Signup" ga-event-label="General-Newsletter-Signup">
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+				<div class="comment-wrap">
+					<!-- start disqus comment -->
+<div class="disqus-container">
+	<div id="disqus_thread"><iframe id="dsq-app2767" name="dsq-app2767" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 1px !important; min-width: 100% !important; border: medium none !important; overflow: hidden !important; height: 4197px !important;" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/a.htm" horizontalscrolling="no" verticalscrolling="no" width="100%" frameborder="0"></iframe></div>
+	    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<!-- end disqus comment -->
+				</div>
+				<!-- start prev next wrap -->
+<div class="prev-next-wrap clearfix">
+		<a class="btn btn-default pull-left" href="https://stackabuse.com/the-best-python-books-for-all-skill-levels/" title="The Best Python Books for All Skill Levels"><i class="fa fa-angle-left fa-fw"></i> Previous Post</a>
+		&nbsp;
+        <a class="btn btn-default pull-right" href="https://stackabuse.com/single-page-apps-with-vue-js-and-flask-setting-up-vue-js/" title="Single Page Apps with Vue.js and Flask: Setting up Vue.js">Next Post <i class="fa fa-angle-right fa-fw"></i></a>
+</div>				<!-- end post -->
+			</div>
+			<!-- end main post area -->
+			<!-- start sidebar -->
+<div class="col-md-4 sidebar">
+    <!-- start widget -->
+<div class="widget">
+	<h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-3874" data-processed="true" data-guard-element="true" class="up-hide" style=""><div id="google_ads_iframe_/124067137/stackabuse300x250FL_1_0__container__" style="border: 0pt none; width: 300px; height: 250px;"></div></div>    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <div id="dvp-book">
+        <a rel="noopener nofollow" target="_blank" class="ebook-link" href="https://gum.co/data-visualization-in-python" style="text-decoration: none;" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">
+            <h4 class="title">Data Visualization in Python</h4>
+        </a>
+        <div class="content product">
+            <a class="ebook-link" href="https://gum.co/data-visualization-in-python" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank">
+                <img class="img-responsive" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/data-viz-python-book-transparent.png">
+            </a>
+            <p>
+                <strong>35% off this week only!</strong>
+                With over 275+ pages, you'll learn the ins and outs of 
+visualizing data in Python with popular libraries like Matplotlib, 
+Seaborn, Bokeh, and more.
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- <a rel="noopener nofollow" target="_blank"
+                       class="btn btn-default dcp-link"
+                       href="https://stackabu.se/daily-coding-problem"
+                    >
+                        <i class="fa fa-code"></i>
+                        &nbsp;
+                        Pre-order
+                    </a> -->
+                    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/gumroad.js"></script>
+                    <span style="display:inline;">
+                        <a class="gumroad-button ebook-link" href="https://gum.co/data-visualization-in-python" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank"><span class="gumroad-button-logo"></span>Learn more</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="awsn-book" style="display: none;">
+        <a rel="noopener nofollow" target="_blank" class="ebook-link" href="https://gum.co/getting-started-with-aws-in-node-js" style="text-decoration: none;" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link">
+            <h4 class="title">Getting Started with AWS in Node</h4>
+        </a>
+        <div class="content product">
+            <a class="ebook-link" href="https://gum.co/getting-started-with-aws-in-node-js" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank">
+                <img class="img-responsive" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/aws-in-node-book-transparent.png">
+            </a>
+            <p>
+                <strong>35% off this week only!</strong>
+                Build the foundation you'll need to provision, deploy, 
+and run Node.js applications in the AWS cloud. Learn Lambda, EC2, S3, 
+SQS, and more!
+            </p>
+            <div class="row">
+                <div class="col-md-8">
+                    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/gumroad.js"></script>
+                    <a class="gumroad-button ebook-link" href="https://gum.co/getting-started-with-aws-in-node-js" ga-on="click" ga-event-category="Product" ga-event-action="Click" ga-event-label="eBook-Link" target="_blank"><span class="gumroad-button-logo"></span>Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- NOTE: JS to handle switching of these divs is now in main.js -->
+</div>
+<!-- end widget -->
+    <!-- start newsletter widget -->
+<div class="widget">
+    <h4 class="title">Newsletter</h4>
+    <div class="content newsletter">
+        <p style="font-size: 16px;">Subscribe to our newsletter! Get occassional tutorials, guides, and reviews in your inbox.</p>
+        <form action="#" method="post" class="validate" novalidate="">
+            <div class="input-group">
+                <label class="control-label sr-only" for="widget-newsletter">Newsletter Signup</label>
+                <input id="widget-newsletter" type="email" name="email" class="required email input-lg" placeholder="Enter your email...">
+            </div>
+            <div class="input-group">
+                <button type="submit" name="subscribe" class="btn btn-lg btn-default" ga-on="click" ga-event-category="Newsletter" ga-event-action="Signup" ga-event-label="General-Newsletter-Signup">
+                    <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                    Subscribe
+                </button>
+            </div>
+            <span style="color: #7f7f7f;">No spam ever. Unsubscribe at any time.</span>
+        </form>
+        <div class="message"></div>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-7184" data-processed="true"><div id="google_ads_iframe_/124067137/stackabuse300x250FL_3_0__container__" style="border: 0pt none; width: 300px; height: 250px;"></div></div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <h4 class="title">Want a remote job?</h4>
+    <div class="content jobs hr">
+        <ul style="margin-bottom: 0px;">
+        <li><a aria-label="Backend/Fullstack Engineer" rel="nofollow noopener" target="_blank" href="https://hireremote.io/remote-job/3007-backend-fullstack-engineer-at-bravado" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Job-Link">Backend/Fullstack Engineer<br><span class="job-company">Bravado</span>&nbsp;<span class="job-posted-at">1 month ago</span></a><div class="tags"><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-ruby-jobs"><span class="job-tag">ruby</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-ruby-on-rails-jobs"><span class="job-tag">ruby-on-rails</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-full-stack-jobs"><span class="job-tag">full-stack</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-python-jobs"><span class="job-tag">python</span></a></div><hr></li><li><a aria-label="Senior BackEnd Software Engineer" rel="nofollow noopener" target="_blank" href="https://hireremote.io/remote-job/3625-senior-backend-software-engineer-at-handiscover-ab" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Job-Link">Senior BackEnd Software Engineer<br><span class="job-company">Handiscover AB</span>&nbsp;<span class="job-posted-at">8 hours ago</span></a><div class="tags"><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-python-jobs"><span class="job-tag">python</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-aws-jobs"><span class="job-tag">aws</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-microservices-jobs"><span class="job-tag">microservices</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-postgresql-jobs"><span class="job-tag">postgresql</span></a></div><hr></li><li><a aria-label="Full Stack Developer" rel="nofollow noopener" target="_blank" href="https://hireremote.io/remote-job/3626-full-stack-developer-at-opstalent" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Job-Link">Full Stack Developer<br><span class="job-company">OpsTalent</span>&nbsp;<span class="job-posted-at">9 hours ago</span></a><div class="tags"><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-python-jobs"><span class="job-tag">python</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-django-jobs"><span class="job-tag">django</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-vue-js-jobs"><span class="job-tag">vue-js</span></a><a rel="nofollow noopener" target="_blank" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-Tag-Link" href="https://hireremote.io/remote-angular-jobs"><span class="job-tag">angular</span></a></div></li></ul>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>
+                    <a rel="noopener nofollow" target="_blank" class="btn btn-default" href="https://hireremote.io/" style="margin-top: 10px;" ga-on="click" ga-event-category="Jobs" ga-event-action="Click" ga-event-label="HR-More-Link">
+                        <i class="fa fa-arrow-circle-right"></i>&nbsp; More jobs
+                    </a>
+                </strong>
+            </div>
+            <div class="col-md-8 text-right" style="margin-top: 18px;">
+                Jobs via
+                <a rel="noopener nofollow" target="_blank" href="https://hireremote.io/" class="hr-link" style="color: #f16334;" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="HR-Link">
+                    HireRemote.io
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <!-- start widget -->
+<div class="widget">
+    <a rel="noopener nofollow" target="_blank" class="dcp-link" href="https://stackabu.se/daily-coding-problem" style="text-decoration: none;" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="DCP-Link">
+        <h4 class="title">Prepping for an interview?</h4>
+    </a>
+    <div class="content product">
+        <style type="text/css">
+            #product-features li {
+                margin: 5px 0;
+            }
+        </style>
+        <div id="product-features" style="font-size: 16px;line-height: 1.7em;">
+            <ul style="list-style: initial;">
+                <li>
+                    Improve your skills by solving one coding problem every day
+                </li>
+                <li>
+                    Get the solutions the next morning via email
+                </li>
+                <li>
+                    Practice on <strong>actual problems</strong> asked by top companies, like:
+                    <div style="margin: 15px 0px;">
+                        <img src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/logo-google.svg" style="height: 16px;">
+                        &nbsp;
+                        <img src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/logo-facebook.svg" style="height: 13px;margin-bottom: 3px;">
+                        &nbsp;
+                        <img src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/logo-amazon.svg" style="height: 19px;">
+                        &nbsp;
+                        <img src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/logo-microsoft.svg" style="height: 18px;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <a rel="noopener nofollow" target="_blank" class="btn btn-default dcp-link" href="https://stackabu.se/daily-coding-problem" ga-on="click" ga-event-category="Affiliate" ga-event-action="Click" ga-event-label="DCP-Link">
+                    <i class="fa fa-code"></i>
+                    &nbsp;
+                    Daily Coding Problem
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end widget -->
+    <div class="widget-sticky" style="width: 403.333px; position: fixed; top: 10px;">
+        <!-- start widget -->
+<div class="widget">
+    <h4 class="title">
+        Ad
+    </h4>
+    <div class="content ad" style="min-height: 250px;">
+        <!-- 300x250/300x600 -->
+<div id="waldo-tag-7611" data-processed="true"><div id="google_ads_iframe_/124067137/stackabuse300x250FL_4_0__container__" style="border: 0pt none; width: 300px; height: 250px;"></div></div>
+    </div>
+</div>
+<!-- end widget -->
+    </div>
+</div>
+<!-- end sidebar -->
+		</div>
+	</div>
+</section>
+<!-- end site's main content area -->
+
+
+    <!-- start main-footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<!-- start first footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Recent Posts</h4>
+    <div class="content recent-post">
+        <div class="recent-single-post">
+            <a href="https://stackabuse.com/matplotlib-histogram-plot-tutorial-and-examples/" class="post-title">Matplotlib Histogram Plot - Tutorial and Examples</a>
+            <!--<div class="date">November 26, 2020</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="https://stackabuse.com/how-to-check-if-list-is-empty-in-python/" class="post-title">How to Check if List is Empty in Python</a>
+            <!--<div class="date">November 26, 2020</div>-->
+        </div>
+        <div class="recent-single-post">
+            <a href="https://stackabuse.com/matplotlib-change-scatter-plot-marker-size/" class="post-title">Matplotlib: Change Scatter Plot Marker Size</a>
+            <!--<div class="date">November 25, 2020</div>-->
+        </div>
+    </div>
+</div>
+<!-- end widget -->				</div>
+				<!-- end first footer widget area -->
+				<!-- start second footer widget area -->
+				<div class="col-sm-4">
+					<!-- start tag cloud widget -->
+<div class="widget">
+    <h4 class="title">Tags</h4>
+    <div class="content tag-cloud">
+        <a href="https://stackabuse.com/tag/ai/">ai</a><a href="https://stackabuse.com/tag/algorithms/">algorithms</a><a href="https://stackabuse.com/tag/amqp/">amqp</a><a href="https://stackabuse.com/tag/angular/">angular</a><a href="https://stackabuse.com/tag/announcements/">announcements</a><a href="https://stackabuse.com/tag/apache/">apache</a><a href="https://stackabuse.com/tag/apache-commons/">apache commons</a><a href="https://stackabuse.com/tag/api/">api</a><a href="https://stackabuse.com/tag/arduino/">arduino</a><a href="https://stackabuse.com/tag/artificial-intelligence/">artificial intelligence</a>
+    </div>
+</div>
+<!-- end tag cloud widget -->
+				</div>
+				<!-- end second footer widget area -->
+				<!-- start third footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+    <h4 class="title">Follow Us</h4>
+    <div class="content social">
+        <div class="row">
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://twitter.com/StackAbuse" style="color: #38A1F3;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-twitter fa-2x"></i>
+                    <i class="hidden-xs fa fa-twitter fa-lg"></i>
+                    <span class="hidden-xs">Twitter</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/stackabuse" style="color: #3b5998;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-facebook fa-2x"></i>
+                    <i class="hidden-xs fa fa-facebook fa-lg"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a target="_blank" href="https://stackabuse.com/rss/" style="color: #f7a000;">
+                    <i class="hidden-lg hidden-md hidden-sm fa fa-rss fa-2x"></i>
+                    <i class="hidden-xs fa fa-rss fa-lg"></i>
+                    <span class="hidden-xs">RSS</span>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="social">
+            <li><a href="https://twitter.com/StackAbuse"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook fa-lg"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+            <li><a href="#"><i class="fa fa-xing"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://stackabuse.com/rss/"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul> -->
+    </div>
+</div>
+<!-- end widget -->
+				</div>
+				<!-- end third footer widget area -->
+			</div>
+		</div>
+	</footer>
+	<!-- end main-footer -->
+	<!-- start copyright section -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				Copyright © 2020, <a href="https://stackabuse.com/">Stack Abuse</a>.  All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end copyright section -->	<div class="footer-links">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="https://stackabuse.com/disclosure">Disclosure</a>
+					•
+					<a href="https://stackabuse.com/privacy-policy">Privacy Policy</a>
+					•
+					<a href="https://stackabuse.com/terms-of-service">Terms of Service</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a aria-label="Back to Top" href="#" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+	<!--
+<script src="//my.hellobar.com/4dd9990be00532b0fc7961824b7d7a0930e9e2b7.js" type="text/javascript" charset="utf-8" async="async"></script>
+-->
+	<!-- scripts -->
+    <script id="dsq-count-scr" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/count.js" async=""></script>
+    <script>
+      var disqus_config = function() {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.href;
+        this.callbacks.onReady = [function() {
+          if (window.onDisqusReady) {
+            window.onDisqusReady();
+          }
+        }];
+      };
+      var disqus_script_url = 'https://stackabuse.disqus.com/embed.js';
+    </script>
+
+    <!-- HTML templates for use in JS code -->
+    <script id="newsletter-template" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <h4 class="title">Subscribe to our Newsletter</h4>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>Get occassional tutorials, guides, and jobs in your inbox. No spam ever. Unsubscribe at any time.</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Newsletter Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Newsletter"
+                            ga-event-action="Signup"
+                            ga-event-label="General-Newsletter-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+    <script id="email-capture-git-template" type="text/x-custom-template">
+        <!-- start newsletter section -->
+<div class="section">
+    <div class="newsletter text-center">
+        <div>
+            <img src="/assets/images/logo-git.png?v=ac3224ce2f" style="height: 64px;">
+            <h4 class="title" style="color:#303030;display:inline;">Finally Learn Git</h4>
+        </div>
+        <div class="content">
+            <form action="#" method="post" class="form-inline validate" novalidate>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-1 col-xs-12">
+                        <p>We're writing a book about Git! Don't just copy-paste <code>git</code> commands - <em>actually understand</em> what you're doing. Sign up to get notified about the release and a <strong>30% discount</strong>!</p>
+                    </div>
+                    <div class="col-md-2 col-xs-12"></div>
+                </div>
+                <div class="row" style="margin-left: 10px;margin-right: 10px;">
+                    <div class="col-md-7 col-md-offset-1 col-xs-12" style="margin-bottom: 5px;">
+                        <label class="control-label sr-only" for="section-newsletter">Git Book Signup</label>
+                        <input id="section-newsletter" type="email" value="" name="email" class="form-control input-lg required email" placeholder="Enter your email..." style="width:100%;">
+                    </div>
+                    <div class="col-md-3 col-xs-12" style="margin-top: 5px;">
+                        <button type="submit" name="subscribe" class="btn btn-default btn-lg btn-block btn-subscribe"
+                            ga-on="click"
+                            ga-event-category="Email"
+                            ga-event-action="Signup"
+                            ga-event-label="Git-Book-Signup"
+                        >
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="display:none;"></i>
+                            Get notified
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+</div>
+<!-- end newsletter section -->
+    </script>
+
+    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/jquery.js" type="text/javascript"></script>
+    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/highlight.js"></script>
+    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/dockerfile.js"></script>
+    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/yaml.js"></script>
+    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/bootstrap-custom.js" async=""></script>
+	<script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/main.js" async=""></script>
+    <script src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/MathJax.js" type="text/javascript" async=""></script>
+	<!-- Add your analytic code below -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  if (window.location.hostname !== 'localhost') {
+    ga('create', 'UA-43140675-1', 'auto');
+    ga('require', 'eventTracker');
+
+    ga('set', 'dimension1', 'Scott Robinson');
+    
+    ga('send', 'pageview');
+  }
+
+</script>
+<script async="true" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/autotrack.js"></script>
+
+
+<iframe style="display: none;" name="__tcfapiLocator"></iframe><iframe src="https://s.adtelligent.com/sync.html?aid=555831" style="display: none; visibility: hidden;"></iframe><img style="display: none !important;" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/favicon.ico"><img style="display: none !important;" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/px.gif"><iframe src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/safeFrame.htm" style="width: 0px; height: 0px; display: none;"></iframe><div class="gumroad-loading-indicator"><i></i></div><div class="gumroad-scroll-container" style="max-width: 1920px; max-height: 966px; width: 0px; height: 0px;"><iframe scrolling="no" allowfullscreen="allowfullscreen" class="gumroad-overlay-iframe" src="Linear%20Regression%20in%20Python%20with%20Scikit-Learn_files/overlay_page.htm"></iframe></div><iframe style="display: none;"></iframe></body><iframe sandbox="allow-scripts allow-same-origin" id="160a8ac4a25eebbe8" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://sync.rtk.io/cs?us_privacy=1---" width="0" height="0" frameborder="0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="16134b7c6612aabe8" allowtransparency="true" marginheight="0" marginwidth="0" hspace="0" vspace="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://ad-cdn.technoratimedia.com/html/usersync.html?src=prebid_prebid_3.27.0" width="0" height="0" frameborder="0">
+    </iframe></html>

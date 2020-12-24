@@ -1,0 +1,18 @@
+<html>
+
+<body>
+    <h3>Please input the array in the field below</h3>
+    <p>Each element seperated by a comma</p>
+    <input id="input">
+    <button onclick="findSecondMaxMin()">OK</button>
+    <script>
+        function findSecondMaxMin() {
+            var input = document.getElementById("input").value;
+            input = input.split(",");
+            input.sort();
+            alert("The second lowest number is: " + input[1] + "\nThe second largest number is: " + input[input.length - 2]);
+        }
+    </script>
+</body>
+
+</html>

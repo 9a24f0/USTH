@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Display current date and time
+    </title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var myDate = new Date();
+        var myDay = myDate.getDay();
+
+        // Array of days. 
+        var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        document.write("Today is: " + weekday[myDay]);
+        document.write("<br/>");
+
+        // get hour value. 
+        var hour = myDate.getHours();
+        if (hour < 12) var ampm = 'AM';
+        else {
+            hour = hour / 12;
+            document.write(hour);
+            var ampm = 'PM'
+        }
+
+        //get minute value
+        var minute = myDate.getMinutes();
+        if (minute < 10) {
+            minute = '0' + minute;
+        }
+
+        //get second value
+        var second = myDate.getSeconds();
+        var myTime = hour + " " + ampm + " : " + minute + " : " + second;
+        document.write("\tCurrent time is: " + myTime);
+    </script>
+</body>
+
+</html>

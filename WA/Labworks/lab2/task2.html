@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Convert temperature</title>
+</head>
+
+<body>
+    <h2>From Celcius to Fahrenhet</h2>
+    <p><input id="c"> degrees Celsius</p>
+    <button onclick="convert('C')">Convert</button>
+
+    <h2>From Fahrenhet to Celcius</h2>
+    <p><input id="f"> degrees Fahrenheit</p>
+    <button onclick="convert('F')">Convert</button>
+
+    <script>
+        function convert(degree) {
+            var x;
+            if (degree == "C") {
+                var ip = document.getElementById("c").value;
+                var converted = document.getElementById("c").value * 9 / 5 + 32;
+                var h = document.createElement("p");
+                h.innerHTML = ip + " degrees Celcius is " + converted + " degrees Fahrenhet";
+                document.body.appendChild(h);
+
+            } else {
+                var ip = document.getElementById("c").value;
+                var converted = (document.getElementById("f").value - 32) * 5 / 9;
+                var h = document.createElement("p");
+                h.innerHTML = ip + " degrees Farehnhet is " + converted + " degrees Celcius";
+                document.body.appendChild(h);
+            }
+        }
+    </script>
+</body>
+
+</html>

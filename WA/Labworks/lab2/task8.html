@@ -1,0 +1,21 @@
+<html>
+
+<body>
+    <input id="input">
+    <button onclick="checkPrime()">Check!</button>
+    <script>
+        function checkPrime() {
+            var input = document.getElementById("input").value;
+            var check = 0;
+            for (var i = 2; Math.pow(i, 2) <= input; i++) {
+                if (input % i == 0) {
+                    alert("It's NOT a prime number!");
+                    return;
+                }
+            }
+            alert("It's a prime number!");
+        }
+    </script>
+</body>
+
+</html>
